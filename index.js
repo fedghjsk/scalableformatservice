@@ -1,17 +1,15 @@
-function levelOrderBottom(root) {
-  if (!root) return [];
-  const result = [];
-  const queue = [root];
-  while (queue.length) {
-    const levelSize = queue.length;
-    const currentLevel = [];
-    for (let i = 0; i < levelSize; i++) {
-      const node = queue.shift();
-      currentLevel.push(node.val);
-      if (node.left) queue.push(node.left);
-      if (node.right) queue.push(node.right);
-    }
-    result.unshift(currentLevel);
+function countSubstrings(s) {
+  let count = 0;
+  for (let i = 0; i < s.length; i++) {
+    extendPalindrome(i, i);
+    extendPalindrome(i, i + 1);
   }
-  return result;
+  return count;
+  function extendPalindrome(left, right) {
+    while (left >= 0 && right < s.length && s[left] === s[right]) {
+      count++;
+      left--;
+      right++;
+    }
+  }
 }
