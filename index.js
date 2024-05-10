@@ -1,15 +1,14 @@
-function countSubstrings(s) {
+function subarraySum(nums, k) {
+  const map = new Map();
+  map.set(0, 1);
   let count = 0;
-  for (let i = 0; i < s.length; i++) {
-    extendPalindrome(i, i);
-    extendPalindrome(i, i + 1);
+  let sum = 0;
+  for (const num of nums) {
+    sum += num;
+    if (map.has(sum - k)) {
+      count += map.get(sum - k);
+    }
+    map.set(sum, (map.get(sum) || 0) + 1);
   }
   return count;
-  function extendPalindrome(left, right) {
-    while (left >= 0 && right < s.length && s[left] === s[right]) {
-      count++;
-      left--;
-      right++;
-    }
-  }
 }
