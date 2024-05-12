@@ -1,10 +1,6 @@
-const aliceBalanceAfter = await aptos.getAccountCoinsData({
-  accountAddress: aliceAddress,
-  minimumLedgerVersion: BigInt(response.version),
-});
-const bobBalanceAfter = await aptos.getAccountCoinsData({
-  accountAddress: bobAddress,
-});
-const sponsorBalanceAfter = await aptos.getAccountCoinsData({
-  accountAddress: sponsorAddress,
-});
+const flatten = (arr, depth = 1) =>
+  arr.reduce(
+    (a, v) =>
+      a.concat(depth > 1 && Array.isArray(v) ? flatten(v, depth - 1) : v),
+    [],
+  );
