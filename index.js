@@ -1,6 +1,3 @@
-const flatten = (arr, depth = 1) =>
-  arr.reduce(
-    (a, v) =>
-      a.concat(depth > 1 && Array.isArray(v) ? flatten(v, depth - 1) : v),
-    [],
-  );
+const message = "Hello world!";
+const messageLength = message.length;
+console.log(messageLength); // 13
